@@ -8,12 +8,12 @@ class Person(models.Model):
 class Movie(models.Model):
     title = models.CharField(max_length=128)
     description = models.CharField(max_length=256)
-    director = models.ForeignKey(Person, on_delete=models.CASCADE, related_name='movie_director')
-    actors = models.ManyToManyField(Person, through='MovieActors')
+    director = models.ForeignKey(Person, on_delete=models.CASCADE, related_name='movie_director')  # relacja z powrotem, zamiast _set.
+    actors = models.ManyToManyField(Person, through='PersonMovie')
     year = models.IntegerField()
 
 
-class MovieActors(models.Model):
+class PersonMovie(models.Model):
     role = models.CharField(max_length=128)
     person = models.ForeignKey(Person, on_delete=models.CASCADE)
     movie = models.ForeignKey(Movie, on_delete=models.CASCADE)
