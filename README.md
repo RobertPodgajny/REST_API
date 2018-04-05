@@ -1,1 +1,1 @@
-# Warsztaty_6
+# Workshop 6: REST API
